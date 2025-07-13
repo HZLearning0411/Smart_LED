@@ -770,6 +770,11 @@
               <FileType>5</FileType>
               <FilePath>.\User\system.h</FilePath>
             </File>
+            <File>
+              <FileName>system.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\system.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

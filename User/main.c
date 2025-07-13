@@ -16,11 +16,12 @@ int main(void)
 {
 	/*模块初始化*/
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2); //配置NVIC为分组2
-	OLED_Init();		
-	PWM_Init();			
-	AD_Init();
-    Encoder_Init();
-    Timer_Init();
+	OLED_Init();		//OLED初始化
+	PWM_Init();			//PWM初始化
+	AD_Init();          //AD初始化
+    Encoder_Init();     //数字编码器初始化
+    Timer_Init();       //定时器初始化
+    IWDG_Init();        //独立看门狗初始化
    
     OLED_ShowString(1, 1, "LED:000%");			//1行1列显示字符串LED亮度
     OLED_ShowString(2, 1, "Light:");            //外部光线强度参考值
@@ -30,10 +31,11 @@ int main(void)
     
 	while (1)
 	{
-        AD_Value = AD_GetValue();
+        //AD_Value = AD_GetValue();
         uint16_t target_brightness = ((AD_GetValue()-1200) * 100) / 4095;      
         OLED_ShowNum(2, 7, 4095 - AD_GetValue(), 4);    //2行7列显示光敏电阻参考值        
         OLED_ShowNum(1, 5, current_brightness , 3);		//1行5列显示当前LED亮度        
+        IWDG_ReloadCounter();   //喂狗
         
         if(current_mode == AUTO_MODE)
         {

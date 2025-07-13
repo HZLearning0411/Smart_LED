@@ -1,0 +1,19 @@
+# Keil 编译生成文件
+Objects/
+Listings/
+*.uvguix.*
+*.dep
+*.crf
+*.o
+*.d
+*.axf
+*.map
+*.lst
+*.lnp
+*.tmp
+*.build_log.htm
+*.iex
+
+# 系统文件
+.DS_Store
+Thumbs.db
